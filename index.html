@@ -39,7 +39,7 @@
                             <input type="text" class="form-control" id="name" placeholder="Enter name">
                         </div>
                         <div class="form-group">
-                            <label for="Location">Password:</label>
+                            <label for="Location">Location:</label>
                             <input type="text" class="form-control" id="location" placeholder="Enter location">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
@@ -82,14 +82,14 @@
     });
     </script>
     
-    <script>
-    $("#post-form").click(function toggle_visibility(id) {
-        var form = document.getElementbyId(id);
-        if(form.style.display == 'block')
-            e.style.display = 'none';
-        else
-            e.style.display = 'block';
-    });
+    <script type="text/javascript">
+    <!--
+        function toggle_visibility(id) {
+            var form = document.getElementbyId(id);
+            if(form.style.display == 'block')
+                form.style.display = 'none';
+            else
+                form.style.display = 'block';
     </script>
 </body>
 </html>

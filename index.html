@@ -63,12 +63,12 @@
         <!-- /.container -->
     </nav>
     
-    <!-- Login/Register form -->
+    <!-- Login form -->
     <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                 <h4 class="modal-title">Login/Register</h4>
                 </div>
                 <div class="modal-body">
@@ -76,13 +76,41 @@
                     <div>
                         <input type="text" class="form-control" id="username" placeholder="Username">
                         <br />
-                        <input type="password" class="form-control" id="password" placeholder="password">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Login</button>
-                    <button type="button" class="btn btn-default">Register</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#register">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Registration form -->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                <h4 class="modal-title">Register</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                    <div>
+                        <input type="text" class="form-control" id="name" placeholder="Full name">
+                        <br />
+                        <input type="text" class="form-control" id="company" placeholder="Company">
+                        <br />
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <br />
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Register</button>
                 </div>
             </div>
         </div>
@@ -100,14 +128,14 @@
                 <a href="#" onclick="toggleVisibility('listing-form');">Post</a>
                     
                 <!-- Post listing form -->
-                <div class="container" id="listing-form" style="visibility:hidden">
+                <div id="listing-form" style="visibility:hidden">
                 <form method="get">
                     <div>
                         <input type="text" class="form-control" id="name" placeholder="Name">
                         <br />
                         <input type="text" class="form-control" id="location" placeholder="Location">
                         <br />
-                        <input type="submit" data-inline="true" value="Post">
+                        <button type="button" class="btn btn-default">Post</button>
                     </div>
                 </form>
                 </div>

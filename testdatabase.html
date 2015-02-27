@@ -4,21 +4,21 @@
 <body>
 <!-- Set up php connection to postgreSQL Amazon database. -->
 <?php
-	echo "About to connect";
+	echo 'About to connect';
 	$connstring="host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=SynergySpace user=CSC309Project password=309kerebe";	
 	$dbconn=pg_connect($connstring);
-	echo "pg_connect ran";
+	echo 'pg_connect ran';
 	if (!$dbconn) {
-		echo "Not connected";
+		echo 'Not connected';
 	} else {
-		 echo "Connection successful!";
+		 echo 'Connection successful!';
 }
 
-$result = pg_query($dbconn, "insert into users values ('u2', 'p3');");
+$result = pg_query($dbconn, 'insert into users values ('u2', 'p3');');
 
 echo '<p> Closing connection </p>';
 pg_close($dbconn);
-echo "Connection closed";
+echo 'Connection closed';
 
 ?>
 	

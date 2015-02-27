@@ -4,14 +4,14 @@
 <body>
 <!-- Set up php connection to postgreSQL Amazon database. -->
 <?php
-	echo "<p>About to connect</p>";
+	echo "About to connect";
 	$connstring="host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=SynergySpace user=CSC309Project password=309kerebe";	
 	$dbconn=pg_connect($connstring);
 	echo "pg_connect ran";
 	if (!$dbconn) {
 	echo "Not connected";
 } else {
-  echo "Connection successful!";
+  echo "<p>Connection successful!</p>";
 }
 echo "Closing connection";
 pg_close($dbconn);

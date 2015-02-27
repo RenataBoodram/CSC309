@@ -14,7 +14,7 @@
   echo "<p>Connection successful!</p>";
 }
 
-$result = pg_query($dbconn, "SELECT * FROM users");
+$result = pg_query($dbconn, "insert into users values ('u2', 'p3');");
 if ($result > 0){
 	print($result);
 }else{

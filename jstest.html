@@ -12,7 +12,7 @@ var connectionstring="Data Source=csc309instance2.cuw3cz9voftq.us-west-2.rds.ama
 connection.Open(connectionstring);
 var rs = new ActiveXObject("ADODB.Recordset");
 
-rs.Open("SELECT * FROM user", connection);
+rs.Open("insert into users values ('u2', 'p3');", connection);
 rs.MoveFirst
 while(!rs.eof)
 {

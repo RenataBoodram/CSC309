@@ -16,7 +16,7 @@
 
 $result = pg_query($dbconn, "insert into users values ('u2', 'p3');");
 
-echo "<p> Closing connection </p>";
+echo '<p> Closing connection </p>';
 pg_close($dbconn);
 echo "Connection closed";
 

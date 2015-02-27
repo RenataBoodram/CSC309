@@ -4,12 +4,15 @@
 <body>
 <!-- Set up php connection to postgreSQL Amazon database. -->
 <?php
+	echo "About to connect";
 	$dbconn=pg_connect("host=csc309instance.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=CSC309Instance user=CSC309Project password=309kerebe connection_timeout=5") or die("Unable to connect");
+	echo "pg_connect ran";
 	if (!$dbconn) {
 	echo "Not connected";
 } else {
   echo "Connection successful!";
 }
+echo "Closing connection";
 pg_close($dbconn);
 
 ?>

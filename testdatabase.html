@@ -13,6 +13,14 @@
 } else {
   echo "<p>Connection successful!</p>";
 }
+
+$result = pg_query($dbconn, "SELECT * FROM users");
+if ($result > 0){
+	print($result);
+}else{
+	print("FUUUUUCK")
+
+
 echo "Closing connection";
 pg_close($dbconn);
 echo "Connection closed";

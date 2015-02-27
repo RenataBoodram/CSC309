@@ -9,12 +9,12 @@
 	$dbconn=pg_connect($connstring);
 	echo "pg_connect ran";
 	if (!$dbconn) {
-	echo "Not connected";
-} else {
-  echo "Connection successful!";
+		echo "Not connected";
+	} else {
+		 echo "Connection successful!";
 }
 
-$result = pg_query($dbconn, "insert into users values ('u2', 'p3');");
+$result = pg_query("insert into users values ('u2', 'p3');");
 
 echo "Closing connection";
 pg_close($dbconn);

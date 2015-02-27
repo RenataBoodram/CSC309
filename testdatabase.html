@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>SynergySpace</title>
+
+<!-- Set up php connection to postgreSQL Amazon database. -->
+<?php
+
+$dbconn = pg_connect("host=csc309instance.cuw3cz9voftq.us-west-2.rds.amazonaws.com:5432 port=5342 dbname=CSC309Instance");
+if (!$dbconn) {
+	echo "Not connected";
+} else {
+  echo "Connection successful!";
+}
+pg_close($dbconn);
+
+?>
+</head>
+<body></body>
+</html>

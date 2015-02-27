@@ -3,24 +3,34 @@
 
 <body>
 <!-- Set up php connection to postgreSQL Amazon database. -->
-<?php
-	echo 'About to connect';
-	$connstring='host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=SynergySpace user=CSC309Project password=309kerebe';	
-	$dbconn=pg_connect($connstring);
-	echo 'pg_connect ran';
-	if (!$dbconn) {
-		echo 'Not connected';
-	} else {
-		 echo 'Connection successful!';
+<script>
+var pg = require('pg');
+var conString = "postgres://CSC309Project:309kerebe@localhost:5432/SynergySpace";
+
+var client = new pg.Client(conString);
+client.connect();
+
+//queries are queued and executed one after another once the connection becomes available
+var x = 1000;
+
+while(x>0)
+{
+client.query("INSERT INTO users values('bullshit', 'bullshitter')");
+x = x - 1;
 }
 
-$result = pg_query($dbconn, 'insert into users values ('u2', 'p3');');
+var query = client.query("SELECT * FROM users");
+//fired after last row is emitted
 
-echo '<p> Closing connection </p>';
-pg_close($dbconn);
-echo 'Connection closed';
+query.on('row', function(row) {
+  console.log(row);
+});
 
-?>
+query.on('end', function() { 
+  client.end();
+});
+	
+</script>
 	
 </body>
 </html>

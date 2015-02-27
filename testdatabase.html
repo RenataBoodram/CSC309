@@ -11,7 +11,7 @@
 	if (!$dbconn) {
 	echo "Not connected";
 } else {
-  echo "<p>Connection successful!</p>";
+  echo "Connection successful!";
 }
 
 $result = pg_query($dbconn, "insert into users values ('u2', 'p3');");

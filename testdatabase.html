@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <title>SynergySpace</title>
-</head>
 <body>
 <!-- Set up php connection to postgreSQL Amazon database. -->
 <?php
-
-$dbconn = pg_connect("host=csc309instance.cuw3cz9voftq.us-west-2.rds.amazonaws.com:5432 port=5342 dbname=CSC309Instance");
-if (!$dbconn) {
+	$dbconn=pg_connect("host=csc309instance.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=CSC309Instance user=CSC309Project password=309kerebe connection_timeout=5") or die("Unable to connect");
+	if (!$dbconn) {
 	echo "Not connected";
 } else {
   echo "Connection successful!";

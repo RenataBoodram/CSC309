@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+<script type='text/javascript'>
+$(document).ready(function() {
+
+var connection = new ActiveXObject("ADODB.Connection") ;
+
+var connectionstring="Data Source=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com:5432;Initial Catalog=SynergySpace;User ID=CSC309Project;Password=309kerebe;Provider=PostgreSQL";
+
+connection.Open(connectionstring);
+var rs = new ActiveXObject("ADODB.Recordset");
+
+rs.Open("SELECT * FROM user", connection);
+rs.MoveFirst
+while(!rs.eof)
+{
+   document.write(rs.fields(1));
+   rs.movenext;
+}
+
+rs.close;
+connection.close;
+
+}}
+</script>
+</body>
+</html>

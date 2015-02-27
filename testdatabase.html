@@ -5,7 +5,7 @@
 <!-- Set up php connection to postgreSQL Amazon database. -->
 <?php
 	echo 'About to connect';
-	$connstring="host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=SynergySpace user=CSC309Project password=309kerebe";	
+	$connstring='host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5342 dbname=SynergySpace user=CSC309Project password=309kerebe';	
 	$dbconn=pg_connect($connstring);
 	echo 'pg_connect ran';
 	if (!$dbconn) {

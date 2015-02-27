@@ -15,11 +15,6 @@
 }
 
 $result = pg_query($dbconn, "insert into users values ('u2', 'p3');");
-if ($result > 0){
-	print($result);
-}else{
-	print("FUUUUUCK");
-
 
 echo "Closing connection";
 pg_close($dbconn);

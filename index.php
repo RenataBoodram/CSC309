@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	include_once "top_navi.php";
+	include_once "main_sidebar.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,51 +36,11 @@
 </head>
 
 <body>
-	<?php
-	include_once "top_navi.php";
-	?>
-	
+		
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                <a href="#">My Listings</a>
-            </li>
-            <li>
-                <a href="#" onclick="toggleVisibility('listing-form');">Post</a>
-                    
-                <!-- Post listing form -->
-                <div id="listing-form" style="visibility:hidden">
-                <form method="get">
-                    <div>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
-                        <br />
-                        <input type="text" class="form-control" id="location" placeholder="Location">
-                        <br />
-                        <button type="button" class="btn btn-default">Post</button>
-                    </div>
-                </form>
-                </div>
-            </li>
-        </ul>
-    </div>
+    
     <!-- /#sidebar-wrapper -->
 
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
 	
     <!-- Page Content (Listings) -->
     <div class="container">
@@ -92,13 +60,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <a href="listing.html"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
+                                    <a href="listing.php"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
                                 </div>
                                 <div class="item">
-                                     <a href="listing.html"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
+                                     <a href="listing.php"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
                                 </div>
                                 <div class="item">
-                                     <a href="listing.html"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
+                                     <a href="listing.php"> <img class="slide-image" src="http://placehold.it/800x300" alt=""> </a>
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -113,138 +81,32 @@
 
                 <div class="row">
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="listing.html">First Product</a>
+			<?php
+				$conn = "host=csc309instance2.cuw3cz9voftq.us-west-2.rds.amazonaws.com port=5432 dbname=SynergySpace user=CSC309Project password=309kerebe";
+				$dbconn = pg_connect($conn);
+				$query = "SELECT * from listings ORDER BY rating DESC LIMIT 6";
+				$result = pg_query($dbconn, $query);
+				while ($row = pg_fetch_row($result)) {
+					echo "
+                    <div class='col-sm-4 col-lg-4 col-md-4'>
+                        <div class='thumbnail'>
+                            <a href='listing.php?id=$row[0]'><img src='http://placehold.it/320x150'></a>
+                            <div class='caption'>
+                                <h4 class='pull-right'>$row[3]</h4>
+                                <h4><a href='listing.php?id=$row[0]'>$row[1]</a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>$row[4]</p>
                             </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
+                            <div class='ratings'>
+                                <p class='pull-right'>15 reviews</p>
+                                <p><span>$row[2]</span></p>
                             </div>
                         </div>
-                    </div>
+                    </div>";
+				}
+				pg_close($dbconn);
+			?>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                             <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$64.99</h4>
-                                <h4><a href="listing.html">Second Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                             <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$74.99</h4>
-                                <h4><a href="listing.html">Third Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                             <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="listing.html">Fourth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                             <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="listing.html">Fifth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                             <a href="listing.html"><img src="http://placehold.it/320x150" alt=""></a>
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="listing.html">Sixth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -268,18 +130,7 @@
     });
     </script>
     
-    <!-- Toggle the visibility of an object given its id. -->
-    <script>
-        function toggleVisibility(id) {
-            var object = document.getElementById(id);
-            if (object.style.visibility == "hidden") {
-                object.style.visibility = "visible";
-            }
-            else {
-                object.style.visibility = "hidden";
-            }
-        }
-    </script>
+
     
 </body>
 </html>
